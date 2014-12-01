@@ -12,6 +12,7 @@ import java.util.Random;
 public class Deck {
 
 	private final ArrayList<Card> cards = new ArrayList<Card>();
+	int index = 0;
 
 	public Deck(boolean shuffle) {
 		for (Card.Suit suit : Card.Suit.values()) {
@@ -31,11 +32,23 @@ public class Deck {
 		return cards.get(place);
 	}
 
+	public Card getRandomCard() {
+		return cards.get(new Random().nextInt(cards.size()));
+	}
+
 	public Card[] getCards() {
 		return cards.toArray(new Card[cards.size()]);
 	}
 
 	public void shuffle() {
 		Collections.shuffle(cards, new Random(System.nanoTime()));
+	}
+
+	public Card getNextCard() {
+		index++;
+		if (index < cards.size())
+			return cards.get(index);
+		else
+			return null;
 	}
 }
