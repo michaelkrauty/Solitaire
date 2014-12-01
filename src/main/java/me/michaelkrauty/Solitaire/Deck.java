@@ -12,7 +12,7 @@ import java.util.Random;
 public class Deck {
 
 	private final ArrayList<Card> cards = new ArrayList<Card>();
-	int index = 0;
+	int cardIndex = 0;
 
 	public Deck(boolean shuffle) {
 		for (Card.Suit suit : Card.Suit.values()) {
@@ -44,10 +44,10 @@ public class Deck {
 		Collections.shuffle(cards, new Random(System.nanoTime()));
 	}
 
-	public Card getNextCard() {
-		index++;
-		if (index < cards.size())
-			return cards.get(index);
+	public Card getACardThatHasNotBeenGottenBefore() {
+		cardIndex++;
+		if (cardIndex < cards.size())
+			return cards.get(cardIndex);
 		else
 			return null;
 	}

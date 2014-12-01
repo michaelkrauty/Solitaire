@@ -17,13 +17,13 @@ public class Card {
 		this.faceUp = faceUp;
 	}
 
+	public boolean isFaceUp() {
+		return this.faceUp;
+	}
+
 	public Card setFaceUp(boolean faceUp) {
 		this.faceUp = faceUp;
 		return this;
-	}
-
-	public boolean isFaceUp() {
-		return this.faceUp;
 	}
 
 	public Suit getSuit() {
