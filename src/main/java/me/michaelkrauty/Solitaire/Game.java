@@ -6,19 +6,13 @@ package me.michaelkrauty.Solitaire;
  * @author michaelkrauty
  */
 
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
-/**
- * This panel implements a simple arcade game in which the user tries to blow up
- * a "submarine" (a black oval) by dropping "depth charges" (a red disk) from a
- * "boat" (a blue roundrect). The user moves the boat with the left- and
- * right-arrow keys and drops the depth charge with the down-arrow key. The sub
- * moves left and right erratically along the bottom of the panel. This class
- * contains a main() routine to allow it to be run as a program.
- */
 public class Game extends JPanel {
 
 	private Timer timer;
@@ -27,23 +21,22 @@ public class Game extends JPanel {
 
 	private Table table = new Table();
 
+	public Table getTable() {
+		return table;
+	}
+
 	public Game() {
 
 		setBackground(new Color(0, 200, 0));
 
 		ActionListener action = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				// *.updateForNewFrame();
 				repaint();
 			}
 		};
 		timer = new Timer(30, action); // Fires every 30 milliseconds.
 
-		addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent evt) {
-				requestFocus();
-			}
-		});
+		addMouseListener(new MouseListener());
 
 		addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent evt) {

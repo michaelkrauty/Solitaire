@@ -48,4 +48,12 @@ public class Stack {
 	public boolean isEmpty() {
 		return cards.isEmpty();
 	}
+
+	public void addCard(Card card) {
+		cards.add(card);
+	}
+
+	public void removeCard(Card card) {
+		this.cards.remove(card);
+	}
 }
